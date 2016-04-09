@@ -26,7 +26,7 @@ URxvt*color15: #FFFFFF
 
 ! [ urxvt ]
 URxvt*.font: xft:monaco:size=11
-URxvt*background: #1C1C1C
+URxvt*background: #212A32
 URxvt*foreground: #A7A7A7
 URxvt*cursorColor: #A7A7A7
 URxvt*.geometry: 80x25

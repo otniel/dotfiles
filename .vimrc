@@ -8,9 +8,11 @@ let g:mapleader = ","
 let g:netrw_liststyle=4
 set nowrap
 set tags=tags
+set autowriteall                                "Automatically write the file when switching buffers.
+set complete=.,w,b,u                            "Set our desired autocompletion matching.
 
 " Tabs chars settings
-set ts=4 sts=4 sw=4 noexpandtab
+set ts=4 sts=4 sw=4 expandtab
 
 set backspace=indent,eol,start
 set autoindent
@@ -30,7 +32,7 @@ if has("autocmd")
         autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
         autocmd FileType html setlocal ts=4 sts=4 sw=4 expandtab
         autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-        autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab 
+        autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab 
         autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab 
         autocmd BufNewFile,BufRead *.vue setfiletype html
     augroup END
@@ -47,18 +49,22 @@ endif
 "----------------Visuals----------------"
 
 set t_Co=256
-let g:jellybeans_background_color_256 = 234
+
 colorscheme jellybeans
 
 " Fake custom left padding
-hi LineNr ctermfg=grey ctermbg=bg
+hi LineNr ctermfg=none ctermbg=bg
+
+hi Normal ctermbg=none
+
+hi NonText ctermbg=none
+
+
 
 " Split lines colors
 set foldcolumn=2
-hi foldcolumn ctermbg=bg                         
-hi vertsplit ctermbg=bg 
-
-
+hi foldcolumn ctermbg=none
+hi vertsplit ctermbg=none
 
 "----------------Split Management----------------"
 
@@ -68,6 +74,8 @@ set splitright
 " Open splits
 nmap vs :vsplit<cr>
 nmap sp :split<cr>
+nmap bp :bp<cr>
+nmap bd :bd<cr>
 
 " Easy split navigation
 nmap <C-h> <C-w>h
@@ -101,19 +109,33 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_custom_ignore = 'vendor\|node_modules\|DS_Store\|git'
 
 let g:ctrlp_extensions = ['buffertag']
-map <C-r> :CtrlPBufTag<cr>
+map <C-s> :CtrlPBufTag<cr>
 
 "/
-"/ NERDTree
+"/ nerdtree
 "/
 let NERDTreeHijackNetrw = 0
 
 "Make NERDTree easier to toggle.
 nmap <C-b> :NERDTreeToggle<cr>
 
+"/
+"/ vim-php-cs-fixer.vim
+"/
+let g:php_cs_fixer_level = "psr2"  
+let g:php_cs_fixer_fixers_list="-psr0"
 
+nnoremap <silent><leader>pf :call PhpCsFixerFixFile()<CR>
+
+"/
+"/ pdv
+"/
+let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+nnoremap <Leader>d :call pdv#DocumentWithSnip()<CR>
 
 "----------------PHP/Laravel specific----------------"
+
+map <Leader>lr :tabedit app/Http/routes.php<cr>
 
 "/
 "/ Testing
@@ -121,6 +143,8 @@ nmap <C-b> :NERDTreeToggle<cr>
 
 nmap <Leader>t :!clear; vendor/bin/phpunit<cr>
 nmap <Leader>m yiw:! vendor/bin/phpunit --filter "<cr>
+
+vmap <Leader>su ! awk '{ print length(), $0 \| "sort -n \| cut -d\\  -f2-" }'<cr>
 
 
 
@@ -135,7 +159,11 @@ imap hh <C-y>,
 
 " Make it easy to edit the Vimrc file.
 nmap <Leader>ev :tabedit $MYVIMRC<cr>
+nmap <Leader>es :e ~/.vim/snippets
 nmap <Leader>ep :tabedit ~/.vim/plugins.vim<cr>
+
+" Find occurences of the word
+nmap <Leader>n viwy/"                             
 nmap <CR> :write<CR> 
 
 " Shortcut tag searching
@@ -143,3 +171,4 @@ nmap <Leader>f :tag<space>
 
 " Easy escaping to normal mode
 imap jj <Esc>
+nmap <Leader>p :set paste!<cr>
