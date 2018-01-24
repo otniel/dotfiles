@@ -9,8 +9,8 @@ URxvt*color9: #CF6A4C
 URxvt*color2: #8F9D6A
 URxvt*color10: #8F9D6A
 !   yellow
-URxvt*color3: #F9EE98
-URxvt*color11:#F9EE98
+URxvt*color3: #D7AF87
+URxvt*color11: #D7AF87
 !   blue
 URxvt*color4: #7587A6
 URxvt*color12: #7587A6
@@ -24,9 +24,14 @@ URxvt*color14: #AFC4DB
 URxvt*color7: #A7A7A7
 URxvt*color15: #FFFFFF
 
+
+
 ! [ urxvt ]
+URxvt*termName: rxvt-unicode
+urxvt*imLocale: "en_US.UTF-8"
 URxvt*.font: xft:monaco:size=11
-URxvt*background: #212A32
+URxvt*saveLines: 0
+URxvt*background: #0F131F
 URxvt*foreground: #A7A7A7
 URxvt*cursorColor: #A7A7A7
 URxvt*.geometry: 80x25

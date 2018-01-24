@@ -49,8 +49,9 @@ endif
 "----------------Visuals----------------"
 
 set t_Co=256
-
-colorscheme jellybeans
+" colorscheme jellybeans
+set background=light        " for the light version
+colorscheme srcery
 
 " Fake custom left padding
 hi LineNr ctermfg=none ctermbg=bg
@@ -141,10 +142,13 @@ map <Leader>lr :tabedit app/Http/routes.php<cr>
 "/ Testing
 "/
 
-nmap <Leader>t :!clear; vendor/bin/phpunit<cr>
+nmap <Leader>pt :!clear; vendor/bin/phpunit<cr>
 nmap <Leader>m yiw:! vendor/bin/phpunit --filter "<cr>
 
 vmap <Leader>su ! awk '{ print length(), $0 \| "sort -n \| cut -d\\  -f2-" }'<cr>
+
+"----------------Elixir/Phoenix specific----------------"
+nmap <Leader>et :!clear; mix test<cr>
 
 
 
@@ -161,9 +165,7 @@ imap hh <C-y>,
 nmap <Leader>ev :tabedit $MYVIMRC<cr>
 nmap <Leader>es :e ~/.vim/snippets
 nmap <Leader>ep :tabedit ~/.vim/plugins.vim<cr>
-
-" Find occurences of the word
-nmap <Leader>n viwy/"                             
+nmap <Leader>s :%s/\s\+$// <cr>
 nmap <CR> :write<CR> 
 
 " Shortcut tag searching
