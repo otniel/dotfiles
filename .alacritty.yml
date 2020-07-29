@@ -1,7 +1,7 @@
 # Windows customizations
 window:
   dimensions:
-    columns: 140
+    columns: 130
     lines: 38
   padding:
     x: 10
@@ -64,4 +64,4 @@ colors:
     unfocused_hollow: true
 # Keybindings
 key_bindings:
-  - { key: N,      mods: Control|Shift,       action: SpawnNewInstance            }
+  - { key: N,      mods: Command,            action: SpawnNewInstance }
