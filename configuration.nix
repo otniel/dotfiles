@@ -40,6 +40,7 @@
     taps = [
       "homebrew/services"
       "supabase/tap"
+      "kunchenguid/tap"
     ];
 
     brews = [
@@ -117,6 +118,7 @@
       "gcloud-cli"
       "opensuperwhisper"
       "claude-code"
+      "baby-menu"
     ];
   };
 }
