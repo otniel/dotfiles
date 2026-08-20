@@ -31,6 +31,16 @@
     autoMigrate = true; # adopt the existing /opt/homebrew install
   };
 
+  # Homebrew refuses to load casks from third-party taps until the tap is
+  # explicitly trusted (state lives outside Nix, in ~/.homebrew/trust.json).
+  # Write it declaratively so a fresh machine bootstraps without a manual
+  # `brew trust` step. Must run before the homebrew activation script below.
+  system.activationScripts.preActivation.text = ''
+    mkdir -p /Users/otnielaguilar/.homebrew
+    printf '%s' '{"trustedtaps":["kunchenguid/tap"]}' > /Users/otnielaguilar/.homebrew/trust.json
+    chown -R otnielaguilar:staff /Users/otnielaguilar/.homebrew
+  '';
+
   homebrew = {
     enable = true;
     onActivation.cleanup = "zap"; # remove anything not listed here
