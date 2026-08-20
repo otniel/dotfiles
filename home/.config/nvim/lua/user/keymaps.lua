@@ -2,8 +2,10 @@
 vim.g.mapleader = ','
 vim.g.maplocalleader = ','
 
--- Map Leader key + s to trim trailing whitespaces
-vim.keymap.set("n", "<Leader>s", function()
+-- Map Leader key + tw to trim trailing whitespaces
+-- (was <Leader>s, but telescope.lua's lsp_document_symbols on <leader>s
+-- loads after this file and was silently overriding it)
+vim.keymap.set("n", "<Leader>tw", function()
   vim.cmd([[ %s/\s\+$//g ]])
 end)
 
@@ -36,11 +38,13 @@ vim.keymap.set('i', ',,', '<Esc>A,<Esc>')
 -- Open current file with OS default program.
 vim.keymap.set('n', '<leader>x', ':!open %<cr><cr>')
 
--- Resize with arrows.
-vim.keymap.set('n', '<C-Up>', ':resize +2<CR>')
-vim.keymap.set('n', '<C-Down>', ':resize -2<CR>')
-vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>')
-vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>')
+-- Resize splits. (Was Ctrl+Arrows, but macOS's Mission Control grabs those
+-- globally before the terminal ever sees them. Using Leader+HJKL instead,
+-- matching the same layout as the tmux pane-resize bindings.)
+vim.keymap.set('n', '<Leader>K', ':resize +2<CR>')
+vim.keymap.set('n', '<Leader>J', ':resize -2<CR>')
+vim.keymap.set('n', '<Leader>H', ':vertical resize -2<CR>')
+vim.keymap.set('n', '<Leader>L', ':vertical resize +2<CR>')
 
 -- Move text up and down
  vim.keymap.set('i', '<A-j>', '<Esc>:move .+1<CR>==gi')

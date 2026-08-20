@@ -1,0 +1,3 @@
+# herdr local runtime state, not config
+home/.config/herdr/session.json
+home/.config/herdr/.plugins.lock
