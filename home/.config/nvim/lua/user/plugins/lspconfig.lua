@@ -1,11 +1,11 @@
--- Setup Mason to automatically install LSP servers
+-- Setup Mason to automatically install and enable LSP servers
 require('mason').setup()
-require('mason-lspconfig').setup({ automatic_installation = true })
+require('mason-lspconfig').setup({ ensure_installed = { 'volar', 'jsonls' } })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- Vue, JavaScript, TypeScript
-require('lspconfig').volar.setup({
+vim.lsp.config('volar', {
   on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
@@ -20,7 +20,7 @@ require('lspconfig').volar.setup({
 })
 
 -- JSON
-require('lspconfig').jsonls.setup({
+vim.lsp.config('jsonls', {
   capabilities = capabilities,
   settings = {
     json = {
