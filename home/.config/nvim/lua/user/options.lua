@@ -15,8 +15,8 @@ vim.opt.smartindent = true
 vim.opt.smartcase = true
 
 -- Set input and idle timeouts
-vim.o.timeout = 200 -- Input timeout length in milliseconds
-vim.o.ttimeout = 100 -- Idle timeout length in milliseconds
+vim.o.timeoutlen = 200 -- Input timeout length in milliseconds
+vim.o.ttimeoutlen = 100 -- Idle timeout length in milliseconds
 
 vim.opt.number = true
 vim.opt.relativenumber = true

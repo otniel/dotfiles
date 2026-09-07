@@ -250,6 +250,17 @@ use({
   end,
 })
 
+-- Render markdown (headings, lists, code blocks, tables, etc.) directly
+-- in the buffer instead of a separate preview pane.
+use({
+  'OXY2DEV/markview.nvim',
+  ft = { 'markdown' },
+  requires = { 'kyazdani42/nvim-web-devicons' },
+  config = function()
+    require('user/plugins/markview')
+  end,
+})
+
 -- Language Server Protocol.
 use({
   'neovim/nvim-lspconfig',
