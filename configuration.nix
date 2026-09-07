@@ -96,7 +96,6 @@
       "mpdecimal"
       "msgpack"
       "ncurses"
-      "neovim"
       "ninja"
       "nmap"
       "oniguruma"
