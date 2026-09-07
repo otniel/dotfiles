@@ -113,7 +113,6 @@
       "supabase"
       "tmux"
       "tree"
-      "tree-sitter"
       "unibilium"
       "utf8proc"
       "wget"

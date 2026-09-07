@@ -16,6 +16,7 @@ in
     jq         # json on the command line
     lazygit
     neovim
+    tree-sitter # CLI nvim-treesitter shells out to for `tree-sitter build`
     # the font everything renders in
     nerd-fonts.hack
   ];
