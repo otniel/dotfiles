@@ -237,13 +237,11 @@ use({
 -- Improved syntax highlighting
 use({
   'nvim-treesitter/nvim-treesitter',
-  run = function()
-    require('nvim-treesitter.install').update({ with_sync = true })
-  end,
+  branch = 'main',
+  run = ':TSUpdate',
   requires = {
-    'nvim-treesitter/playground',
     'JoosepAlviste/nvim-ts-context-commentstring',
-    'nvim-treesitter/nvim-treesitter-textobjects',
+    { 'nvim-treesitter/nvim-treesitter-textobjects', branch = 'main' },
   },
   config = function()
     require('user/plugins/treesitter')
