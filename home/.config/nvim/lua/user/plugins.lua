@@ -268,7 +268,8 @@ use({
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'b0o/schemastore.nvim',
-    'jose-elias-alvarez/null-ls.nvim',
+    'nvimtools/none-ls.nvim',
+    'nvimtools/none-ls-extras.nvim',
     'jayp0521/mason-null-ls.nvim',
   },
   config = function()
@@ -296,9 +297,8 @@ use({
 
 use({
   "ThePrimeagen/refactoring.nvim",
-  requires = { 
-    {"nvim-lua/plenary.nvim"},
-    {"nvim-treesitter/nvim-treesitter"}
+  requires = {
+    "lewis6991/async.nvim",
   },
   config = function()
     require("refactoring").setup()
